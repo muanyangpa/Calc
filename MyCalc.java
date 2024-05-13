@@ -71,7 +71,67 @@ public class MyCalc extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.CENTER);
-		panel_2.setLayout(new GridLayout(4, 4, 10, 5));
+		panel_2.setLayout(new GridLayout(5, 4, 10, 5));
+		
+		JButton btnNewButton_16 = new JButton("(");
+		btnNewButton_16.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "(";
+				textField.setText(exp);
+			}
+		});
+		panel_2.add(btnNewButton_16);
+		
+		JButton btnNewButton_17 = new JButton(")");
+		btnNewButton_17.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + ")";
+				textField.setText(exp);
+			}
+		});
+		panel_2.add(btnNewButton_17);
+		
+		JButton btnNewButton_10 = new JButton("c");
+		btnNewButton_10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = " ";
+				textField.setText(exp);
+			}
+		});
+		panel_2.add(btnNewButton_10);
+		
+		JButton btnNewButton_3 = new JButton("5");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "5";
+				textField.setText(exp);
+			}
+		});
+		
+		JButton btnNewButton_8 = new JButton("4");
+		btnNewButton_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "4";
+				textField.setText(exp);
+			}
+		});
+		
+		JButton btnNewButton_15 = new JButton("X");
+		btnNewButton_15.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "*";
+				textField.setText(exp);
+			}
+		});
+		
+		JButton btnNewButton_14 = new JButton("/");
+		btnNewButton_14.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "/";
+				textField.setText(exp);
+			}
+		});
+		panel_2.add(btnNewButton_14);
 		
 		btnNewButton_4 = new JButton("7");
 		btnNewButton_4.addActionListener(new ActionListener() {
@@ -82,78 +142,108 @@ public class MyCalc extends JFrame {
 		});
 		panel_2.add(btnNewButton_4);
 		
-		JButton btnNewButton_1 = new JButton("8");
-		btnNewButton_1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel_2.add(btnNewButton_1);
-		
 		JButton btnNewButton_2 = new JButton("9");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				exp = exp + "9";
+				textField.setText(exp);
 			}
 		});
-		panel_2.add(btnNewButton_2);
 		
-		JButton btnNewButton_8 = new JButton("4");
-		btnNewButton_8.addActionListener(new ActionListener() {
+		JButton btnNewButton_1 = new JButton("8");
+		btnNewButton_1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				exp = exp + "8";
+				textField.setText(exp);
 			}
 		});
-		
-		JButton btnNewButton_14 = new JButton("/");
-		panel_2.add(btnNewButton_14);
+		panel_2.add(btnNewButton_1);
+		panel_2.add(btnNewButton_2);
+		panel_2.add(btnNewButton_15);
 		panel_2.add(btnNewButton_8);
-		
-		JButton btnNewButton_3 = new JButton("5");
 		panel_2.add(btnNewButton_3);
 		
 		JButton btnNewButton = new JButton("6");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				exp = exp + "6";
+				textField.setText(exp);
 			}
 		});
 		panel_2.add(btnNewButton);
 		
-		JButton btnNewButton_15 = new JButton("x");
-		panel_2.add(btnNewButton_15);
+		JButton btnNewButton_12 = new JButton("-");
+		btnNewButton_12.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "-";
+				textField.setText(exp);
+			}
+		});
+		panel_2.add(btnNewButton_12);
 		
-		JButton btnNewButton_6 = new JButton("1");
-		panel_2.add(btnNewButton_6);
+		JButton btnNewButton_5 = new JButton("3");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "3";
+				textField.setText(exp);
+			}
+		});
 		
 		JButton btnNewButton_9 = new JButton("2");
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				exp = exp + "2";
+				textField.setText(exp);
 			}
 		});
-		panel_2.add(btnNewButton_9);
 		
-		JButton btnNewButton_5 = new JButton("3");
+		JButton btnNewButton_6 = new JButton("1");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "1";
+				textField.setText(exp);
+			}
+		});
+		panel_2.add(btnNewButton_6);
+		panel_2.add(btnNewButton_9);
 		panel_2.add(btnNewButton_5);
+		
+		JButton btnNewButton_13 = new JButton("+");
+		btnNewButton_13.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				exp = exp + "+";
+				textField.setText(exp);
+			}
+		});
+		panel_2.add(btnNewButton_13);
+		
+		JButton btnNewButton_11 = new JButton("=");
+		btnNewButton_11.addActionListener(new ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				String postfix = Infix2Postfix.convert(exp);
+				double value = Calc.eval(postfix);
+				textField.setText(String.valueOf(value));
+			}
+		});
 		
 		JButton btnNewButton_7 = new JButton("0");
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				exp = exp + "0";
+				textField.setText(exp);
 			}
 		});
-		
-		JButton btnNewButton_12 = new JButton("-");
-		panel_2.add(btnNewButton_12);
 		panel_2.add(btnNewButton_7);
 		
-		JButton btnNewButton_10 = new JButton("c");
-		panel_2.add(btnNewButton_10);
-		
-		JButton btnNewButton_11 = new JButton("=");
-		btnNewButton_11.addActionListener(new ActionListener() {
+		JButton btnNewButton_18 = new JButton(".");
+		btnNewButton_18.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				exp = exp + ".";
+				textField.setText(exp);
 			}
 		});
+		panel_2.add(btnNewButton_18);
 		panel_2.add(btnNewButton_11);
-		
-		JButton btnNewButton_13 = new JButton("+");
-		panel_2.add(btnNewButton_13);
 	}
 
 	public JTextField getTextField() {
